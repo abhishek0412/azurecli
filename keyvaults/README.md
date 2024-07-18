@@ -2,7 +2,7 @@
 
 ## Prerequisite
 
-- Ensure you have the Azure CLI installed and are authenticated to Azure with `az login` before running this script.
+- Ensure you have the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed and are authenticated to Azure with `az login` before running this script.
 - The script requires that the user has sufficient permissions to modify the network ACLs of the specified Key Vaults.
 - It's recommended to review the current network rules for each Key Vault before running this script to avoid unintentional access restrictions.
 - The script includes a check to verify the existence of each Key Vault before attempting to update its network ACLs. This ensures that the script does not attempt to modify non-existent Key Vaults, providing a cleaner execution and output.
