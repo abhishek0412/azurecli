@@ -16,9 +16,9 @@
 
 ## Running the Script
 
-1. Save the script to a `.ps1` file, for example, `DisableAllowBlobPublicAccessStorageAccounts.ps1`.
+1. Save the script to a `.ps1` file, for example, `disableAllowBlobPublicAccessStorageAccounts.ps1`.
 2. Open a PowerShell window and navigate to the directory where the script is saved.
 3. Execute the script:
 
    ```powershell
-   .\DisableAllowBlobPublicAccessStorageAccounts.ps1
+   .\disableAllowBlobPublicAccessStorageAccounts.ps1

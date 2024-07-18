@@ -16,10 +16,10 @@
 
 ## Running
 
-1. Save the script to a `.ps1` file, for example, `DisablePublicAccessAzureKeyVaults.ps1`.
+1. Save the script to a `.ps1` file, for example, `disablePublicAccessAzureKeyVaults.ps1`.
 2. Open a PowerShell window and navigate to the directory where the script is saved.
 3. Execute the script:
 
    ```powershell
-   .\DisablePublicAccessAzureKeyVaults.ps1
+   .\disablePublicAccessAzureKeyVaults.ps1
 

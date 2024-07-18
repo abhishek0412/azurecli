@@ -9,7 +9,7 @@ This PowerShell script iterates through a predefined list of Azure Key Vaults an
 An array of hashtable entries, each containing the 'Name' and 'ResourceGroup' of the Key Vault. This parameter is mandatory and must be provided when calling the function. The script will iterate through each entry in this array to disable public network access for the specified Key Vaults.
 
 .EXAMPLE
-.\DisablePublicAccessAzureKeyVaults.ps1
+.\disablePublicAccessAzureKeyVaults.ps1
 
 This example demonstrates how to run the script, which disables public network access for the Key Vaults defined in the $keyVaults variable. Ensure that the $keyVaults variable is populated with the correct Key Vault names and their corresponding resource groups before running the script.
 

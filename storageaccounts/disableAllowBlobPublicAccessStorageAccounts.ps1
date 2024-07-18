@@ -9,7 +9,7 @@ This PowerShell script iterates through a predefined list of Azure Storage Accou
 An array of hashtable entries, each containing the 'ResourceGroup' and 'StorageAccount' name. This parameter is mandatory and must be provided when calling the function.
 
 .EXAMPLE
-.\DisableAllowBlobPublicAccessStorageAccounts.ps1
+.\disableAllowBlobPublicAccessStorageAccounts.ps1
 
 This example demonstrates how to run the script, which disables public blob access for the Storage Accounts defined in the $storageAccounts variable. Ensure that the $storageAccounts variable is populated with the correct Storage Account names and their corresponding resource groups before running the script.
 
