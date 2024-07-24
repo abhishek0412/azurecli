@@ -1,0 +1,57 @@
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+  - name: MyString
+    type: string
+    default: 'default value'
+    displayName: 'My String Parameter'
+
+  - name: MyNumber
+    type: number
+    default: 10
+    displayName: 'My Number Parameter'
+
+  - name: MyBoolean
+    type: boolean
+    default: false
+    displayName: 'My Boolean Parameter'
+
+  - name: MyObject
+    type: object
+    default: {}
+    displayName: 'My Object Parameter'
+
+  - name: MyStep
+    type: step
+    default: script: echo Hello
+    displayName: 'My Step Parameter'
+
+  - name: MyFilePath
+    type: filePath
+    default: 'path/to/file'
+    displayName: 'My File Path Parameter'
+
+  - name: MyChoice
+    type: string
+    default: 'option1'
+    values:
+      - 'option1'
+      - 'option2'
+      - 'option3'
+    displayName: 'My Choice Parameter'
+
+steps:
+- script: |
+    echo "String: ${{ parameters.MyString }}"
+    echo "Number: ${{ parameters.MyNumber }}"
+    echo "Boolean: ${{ parameters.MyBoolean }}"
+    echo "Object: ${{ parameters.MyObject }}"
+    echo "File Path: ${{ parameters.MyFilePath }}"
+    echo "Choice: ${{ parameters.MyChoice }}"
+  displayName: 'Display Parameter Values'
+
+- ${{ parameters.MyStep }}
