@@ -25,11 +25,6 @@ parameters:
     default: {}
     displayName: 'My Object Parameter'
 
-  - name: MyStep
-    type: step
-    default: script: echo Hello
-    displayName: 'My Step Parameter'
-
   - name: MyFilePath
     type: filePath
     default: 'path/to/file'
