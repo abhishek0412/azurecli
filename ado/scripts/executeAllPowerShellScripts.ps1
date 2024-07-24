@@ -25,7 +25,7 @@ param (
 )
 
 # Validate if the provided directory exists
-if (-Not (Test-Path -Path $Directory -PathType Container)) {
+if (-Not (Test-Path -Path $Directory)) {
     Write-Error "The specified directory does not exist: $Directory"
     exit 1
 }
