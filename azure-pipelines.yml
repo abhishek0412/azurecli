@@ -9,12 +9,16 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  IsRunGitLeaks: true  # Default value, can be overridden when running the pipeline
+
 steps:
 
-- task: Gitleaks@2
-  inputs:
-    scanlocation: '$(Build.SourcesDirectory)'
-    configtype: 'predefined'
-    predefinedconfigfile: 'GitleaksUdmCombo.toml'
-    scanmode: 'all'
-    reportformat: 'sarif'
+- ${{ if eq(variables['IsRunGitLeaks'], 'true') }}:
+  - task: Gitleaks@2
+    inputs:
+      scanlocation: '$(Build.SourcesDirectory)'
+      configtype: 'predefined'
+      predefinedconfigfile: 'GitleaksUdmCombo.toml'
+      scanmode: 'all'
+      reportformat: 'sarif'
