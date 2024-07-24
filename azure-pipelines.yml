@@ -16,4 +16,5 @@ steps:
     scanlocation: '$(Build.SourcesDirectory)'
     configtype: 'predefined'
     predefinedconfigfile: 'GitleaksUdmCombo.toml'
+    scanmode: 'all'
     reportformat: 'sarif'
