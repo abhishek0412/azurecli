@@ -14,11 +14,12 @@ parameters:
     type: boolean
     default: true
     displayName: 'Run Gitleaks'
-
+  
 steps:
 
 - ${{ if eq(parameters.IsRunGitLeaks, true) }}:
   - task: Gitleaks@2
+    displayName: Scanning for secret leak
     inputs:
       scanlocation: '$(Build.SourcesDirectory)'
       configtype: 'predefined'
