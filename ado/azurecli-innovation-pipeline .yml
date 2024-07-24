@@ -46,14 +46,14 @@ parameters:
       - 'true'
       - 'false'
     displayName: 'Run Gitleaks'
+
 steps:
 - script: |
     echo "String: ${{ parameters.MyString }}"
     echo "Number: ${{ parameters.MyNumber }}"
     echo "Boolean: ${{ parameters.MyBoolean }}"
-    echo "Object: ${{ parameters.MyObject }}"
     echo "File Path: ${{ parameters.MyFilePath }}"
     echo "Choice: ${{ parameters.MyChoice }}"
+    echo "Choice: ${{ parameters.IsRunGitLeaks }}"
   displayName: 'Display Parameter Values'
 
-- ${{ parameters.MyStep }}
