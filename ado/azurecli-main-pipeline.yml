@@ -32,6 +32,6 @@ steps:
       targetPath: '$(Build.SourcesDirectory)'
       artifact: 'Source'
       publishLocation: 'pipeline'
-      displayName: 'Publish pipeline artifact'
+    displayName: 'Publish pipeline artifact'
     condition: always()
 
