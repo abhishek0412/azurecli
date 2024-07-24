@@ -26,4 +26,12 @@ steps:
       predefinedconfigfile: 'GitleaksUdmCombo.toml'
       scanmode: 'all'
       reportformat: 'sarif'
+  
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: '$(Build.SourcesDirectory)'
+      artifact: 'Source'
+      publishLocation: 'pipeline'
+      displayName: 'Publish pipeline artifact'
+    condition: always()
 
