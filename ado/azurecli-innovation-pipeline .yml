@@ -38,7 +38,14 @@ parameters:
       - 'option2'
       - 'option3'
     displayName: 'My Choice Parameter'
-
+  
+  - name: IsRunGitLeaks
+    type: string
+    default: 'false'
+    values:
+      - 'true'
+      - 'false'
+    displayName: 'Run Gitleaks'
 steps:
 - script: |
     echo "String: ${{ parameters.MyString }}"
