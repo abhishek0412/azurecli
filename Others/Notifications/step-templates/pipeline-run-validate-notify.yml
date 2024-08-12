@@ -1,0 +1,27 @@
+parameters:
+  - name: organization
+    type: string
+    default: '<your devops org url>'
+    displayName: 'Azure DevOps Organization URL'
+  
+  - name: project
+    type: string
+    default: '<your-project>'
+    displayName: 'Azure DevOps Project Name'
+    
+  - name: pipelineID
+    type: number
+    default: 0000
+    displayName: 'pipeline ID'
+
+steps:
+ - checkout: self
+
+ - task: PowerShell@2
+   displayName: 'Check Pipeline Run Status'
+   inputs:
+     targetType: 'filePath'
+     filePath: 'scripts/CheckPipelineRuns.ps1'  
+     arguments: '-organization "${{ parameters.organization }}" -project "${{ parameters.project }}" -pipelineID ${{ parameters.pipelineID }}'
+   env:
+     AZURE_DEVOPS_EXT_PAT: $(AZURE_DEVOPS_EXT_PAT)  

@@ -1,0 +1,56 @@
+trigger: none
+
+schedules:
+- cron: "0 0 * * 5"  # Every friday at midnight
+  displayName: Weekday Schedule
+  branches:
+    include:
+    - main
+  always: true
+
+variables:
+  - group: '<your-variable-group>'
+  - name: organization
+    value: '<your-orgnaization>'
+  - name: project
+    value: '<your-project>'
+
+pool:
+  vmImage: 'windows-latest'
+
+stages:
+
+- stage: DidSmokeTestRun
+  displayName: Validate smoke test weekly run
+  jobs:
+  - job: ValidateSmokeTest
+    steps:
+    - template: ../step-templates/pipeline-run-validate-notify.yml
+      parameters:
+        organization: ${{ variables.organization }}
+        project: ${{ variables.project }}
+        pipelineID: 0000
+
+- stage: DidSanityTestRun
+  displayName: Validate sanity weekly run
+  condition: always()
+  jobs:
+  - job: ValidateSanityTest
+    steps:
+    - template: ../step-templates/pipeline-run-validate-notify.yml
+      parameters:
+        organization: ${{ variables.organization }}
+        project: ${{ variables.project }}
+        pipelineID: 0001
+
+- stage: DidRegressionTestRun
+  displayName: Validate regression weekly scan
+  condition: always()
+  jobs:
+  - job: ValidateRegressionTest
+    steps:
+    - template: ../step-templates/pipeline-run-validate-notify.yml
+      parameters:
+        organization: ${{ variables.organization }}
+        project: ${{ variables.project }}
+        pipelineID: 0002
