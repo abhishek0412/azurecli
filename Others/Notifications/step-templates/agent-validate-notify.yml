@@ -1,0 +1,32 @@
+parameters:
+  - name: organization
+    type: string
+    default: '<your devops org url>'
+    displayName: 'Azure DevOps Organization URL'
+  
+  - name: project
+    type: string
+    default: '<your-project>'
+    displayName: 'Azure DevOps Project Name'
+  
+  - name: poolID
+    type: number
+    default: 0
+    displayName: 'Agent Pool ID'
+  
+  - name: agentID
+    type: number
+    default: 01
+    displayName: 'Agent ID'
+
+steps:
+ - checkout: self
+
+ - task: PowerShell@2
+   displayName: 'Check Agent Status'
+   inputs:
+     targetType: 'filePath'
+     filePath: 'scripts/CheckAgentStatus.ps1' 
+     arguments: '-organization "${{ parameters.organization }}" -project "${{ parameters.project }}" -poolID ${{ parameters.poolID }} -agentID ${{ parameters.agentID }}'
+   env:
+     AZURE_DEVOPS_EXT_PAT: $(AZURE_DEVOPS_EXT_PAT)  

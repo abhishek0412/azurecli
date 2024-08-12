@@ -1,0 +1,46 @@
+trigger: none
+
+schedules:
+- cron: "0 0 * * 1-5"  # Every weekday at midnight
+  displayName: Weekday Schedule
+  branches:
+    include:
+    - main
+  always: true
+
+variables:
+  - group: '<your-variable-group>'
+  - name: organization
+    value: '<your-orgnaization>'
+  - name: project
+    value: '<your-project>'
+
+pool:
+  vmImage: 'windows-latest'
+
+stages:
+
+- stage: IsBuildAgentRunning
+  displayName: Build Agent Availability
+  jobs:
+  - job: ValidateBuildAgent
+    steps:
+    - template: ../step-templates/agent-validate-notify.yml
+      parameters:
+        organization: ${{ variables.organization }}
+        project: ${{ variables.project }}
+        poolID: 0
+        agentID: 01
+
+- stage: IsTestAgentRunning
+  displayName: Test Agent Availability
+  condition: always()
+  jobs:
+  - job: ValidateTestAgent
+    steps:
+    - template: ../step-templates/agent-validate-notify.yml
+      parameters:
+        organization: ${{ variables.organization }}
+        project: ${{ variables.project }}
+        poolID: 00
+        agentID: 001
